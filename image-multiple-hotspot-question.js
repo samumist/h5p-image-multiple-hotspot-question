@@ -26,6 +26,11 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
       },
       behaviour: {
         enableRetry: true
+      },
+      l10n: {
+        retryText: 'Retry',
+        feedbackPatternWithLabel: '@feedbackText @score / @total @hotspotName.',
+        feedbackPatternWithoutLabel: '@feedbackText @score / @total.'
       }
     };
 
@@ -316,9 +321,15 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
       this.score = this.score + 1;
       this.correctHotspotFeedback.push(this.hotspotFeedback);
       if (hotspot && hotspot.userSettings.feedbackText) {
-        if (this.params.imageMultipleHotspotQuestion.hotspotSettings.hotspotName) {
-          feedbackText = (this.params.imageMultipleHotspotQuestion.hotspotSettings.hotspotName ? hotspot.userSettings.feedbackText+' '+this.score+' of '+this.maxScore+' '+this.params.imageMultipleHotspotQuestion.hotspotSettings.hotspotName+'.' : hotspot.userSettings.feedbackText+' '+this.score+' of '+this.maxScore+'.');
-        }
+        var pattern = (this.params.imageMultipleHotspotQuestion.hotspotSettings.hotspotName ?
+          this.params.l10n.feedbackPatternWithLabel :
+          this.params.l10n.feedbackPatternWithoutLabel);
+
+        feedbackText = pattern
+          .replace('@feedbackText', hotspot.userSettings.feedbackText)
+          .replace('@score', this.score)
+          .replace('@total', this.maxScore)
+          .replace('@hotspotName', this.params.imageMultipleHotspotQuestion.hotspotSettings.hotspotName || '');
       }
       this.hotspotFeedback.incorrect = false;
     } 
@@ -355,7 +366,7 @@ H5P.ImageMultipleHotspotQuestion = (function ($, Question) {
   ImageMultipleHotspotQuestion.prototype.createRetryButton = function () {
     var self = this;
 
-    this.addButton('retry-button', 'Retry', function () {
+    this.addButton('retry-button', this.params.l10n.retryText, function () {
       self.resetTask();
     }, false);
   };

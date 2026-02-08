@@ -148,6 +148,34 @@
             "optional": true
           }
         ]
+      },
+      {
+        "name": "l10n",
+        "type": "group",
+        "label": "Localize",
+        "common": true,
+        "fields": [
+          {
+            "name": "retryText",
+            "type": "text",
+            "label": "Text for the \"Retry\" button",
+            "default": "Retry"
+          },
+          {
+            "name": "feedbackPatternWithLabel",
+            "type": "text",
+            "label": "Feedback pattern with hotspot name",
+            "description": "Available variables: @feedbackText, @score, @total, @hotspotName",
+            "default": "@feedbackText @score / @total @hotspotName."
+          },
+          {
+            "name": "feedbackPatternWithoutLabel",
+            "type": "text",
+            "label": "Feedback pattern without hotspot name",
+            "description": "Available variables: @feedbackText, @score, @total",
+            "default": "@feedbackText @score / @total."
+          }
+        ]
       }
     ]
   }
