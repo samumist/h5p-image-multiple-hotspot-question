@@ -1,0 +1,92 @@
+{
+  "semantics": [
+    {
+      "label": "图片多热点问题编辑器",
+      "fields": [
+        {
+          "label": "背景图片",
+          "fields": [
+            {
+              "label": "问题标题",
+              "description": "用于摘要、统计等。"
+            },
+            {
+              "label": "背景图片",
+              "description": "选择一张图片作为热点问题的背景。"
+            }
+          ]
+        },
+        {
+          "label": "热点",
+          "description": "为热点选择合适的形状，配置它，然后拖动并调整大小到合适位置。",
+          "fields": [
+            {
+              "label": "任务描述",
+              "description": "给用户的说明。"
+            },
+            {
+              "label": "热点名称",
+              "description": "请输入用户正在寻找的内容，例如风险、物体、错误（这将用于反馈语句中）。"
+            },
+            {
+              "label": "完成问题所需找到的正确热点数量",
+              "description": "如果留空，将默认为创建的正确热点数量。"
+            },
+            {
+              "label": "热点",
+              "entity": "热点",
+              "field": {
+                "label": "热点",
+                "fields": [
+                  {
+                    "label": "用户设置",
+                    "fields": [
+                      {
+                        "label": "正确",
+                        "description": "可能有多个正确热点。用户在每次点击后会立即得到正确/错误反馈。反馈将以以下形式显示 - (下方输入的文本) (已找到的热点数) / (所需正确热点数) (上方输入的热点名称)。"
+                      },
+                      {
+                        "label": "反馈",
+                        "placeholder": "正确，你发现了"
+                      }
+                    ]
+                  },
+                  {
+                    "label": "计算设置"
+                  }
+                ]
+              }
+            },
+            {
+              "label": "用户选择空白区域时的反馈：",
+              "placeholder": "你没有找到任何热点，请重试！"
+            },
+            {
+              "label": "用户选择已发现热点时的反馈：",
+              "placeholder": "你已经发现这个了！"
+            }
+          ]
+        },
+        {
+          "label": "本地化",
+          "fields": [
+            {
+              "label": "\"重试\" 按钮的文本",
+              "default": "重试"
+            },
+            {
+              "label": "带热点名称的反馈模板",
+              "description": "可用变量: @feedbackText, @score, @total, @hotspotName",
+              "default": "@feedbackText @score / @total @hotspotName。"
+            },
+            {
+              "label": "不带热点名称的反馈模板",
+              "description": "可用变量: @feedbackText, @score, @total",
+              "default": "@feedbackText @score / @total。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
